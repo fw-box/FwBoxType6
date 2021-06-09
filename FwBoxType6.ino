@@ -11,7 +11,7 @@
 //   https://github.com/uChip/MCP342X
 
 //   arduino-cli lib install MCP342X
-//   Website: https://github.com/stevemarple/MCP342x
+//   Website: https://github.com/stevemarple/MCP342X
 //
 #include <Wire.h>
 #include "FwBox.h"
@@ -20,10 +20,10 @@
 #include "FwBox_UnifiedLcd.h"
 
 #define DEVICE_TYPE 6
-#define FIRMWARE_VERSION "1.1.1"
+#define FIRMWARE_VERSION "1.1"
 
-#define CHANNEL_VOLTAGE MCP342x::channel1
-#define CHANNEL_CURRENT MCP342x::channel2
+#define CHANNEL_VOLTAGE MCP342X::channel1
+#define CHANNEL_CURRENT MCP342X::channel2
 
 #define MCP342X_DEFAULT_ADDRESS  0x6E
 
@@ -54,7 +54,7 @@ U8G2_SSD1327_MIDAS_128X128_1_HW_I2C* u8g2 = 0;
 // Instantiate objects used in this project
 //
 //MCP342X AdcMcp(MCP342X_DEFAULT_ADDRESS);
-MCP342x AdcMcp = MCP342x(MCP342X_DEFAULT_ADDRESS);
+MCP342X AdcMcp = MCP342X(MCP342X_DEFAULT_ADDRESS);
 
 float Voltage = 0.0;
 float Current = 0.0;
@@ -107,7 +107,7 @@ void setup()
   //Serial.println(AdcMcp.testConnection() ? "MCP342X connection successful" : "MCP342X connection failed");
   //Serial.println(AdcMcp.getConfigRegShdw(), HEX);
   // Reset devices
-  MCP342x::generalCallReset();
+  MCP342X::generalCallReset();
   delay(1); // MC342x needs 300us to settle, wait 1ms
   
   // Check device present
@@ -250,14 +250,14 @@ int readMcp(float* voltage, float* current, float* power)
   //uint8_t status1 = 0, status2 = 0;
   long value1 = 0;
   long value2 = 0;
-  MCP342x::Config status;
+  MCP342X::Config status;
 
   //
   // Read data from channel 1 for voltage
   //
   // Initiate a conversion; convertAndRead() will wait until it can be read
-  uint8_t err = AdcMcp.convertAndRead(MCP342x::channel1, MCP342x::oneShot,
-           MCP342x::resolution16, MCP342x::gain1,
+  uint8_t err = AdcMcp.convertAndRead(MCP342X::channel1, MCP342X::oneShot,
+           MCP342X::resolution16, MCP342X::gain1,
            1000000, value1, status);
   if(err) {
 #if DEBUG == 1
@@ -277,8 +277,8 @@ int readMcp(float* voltage, float* current, float* power)
   // Read data from channel 2 for current
   //
   // Initiate a conversion; convertAndRead() will wait until it can be read
-  err = AdcMcp.convertAndRead(MCP342x::channel2, MCP342x::oneShot,
-           MCP342x::resolution16, MCP342x::gain1,
+  err = AdcMcp.convertAndRead(MCP342X::channel2, MCP342X::oneShot,
+           MCP342X::resolution16, MCP342X::gain1,
            1000000, value2, status);
   if(err) {
 #if DEBUG == 1
