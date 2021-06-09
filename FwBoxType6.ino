@@ -15,7 +15,7 @@
 //
 #include <Wire.h>
 #include "FwBox.h"
-#include <MCP342x.h>
+#include <MCP342X.h>
 #include <U8g2lib.h>
 #include "FwBox_UnifiedLcd.h"
 
