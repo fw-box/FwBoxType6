@@ -20,7 +20,7 @@
 #include "FwBox_UnifiedLcd.h"
 
 #define DEVICE_TYPE 6
-#define FIRMWARE_VERSION "1.1"
+#define FIRMWARE_VERSION "1.1.1"
 
 #define CHANNEL_VOLTAGE MCP342x::channel1
 #define CHANNEL_CURRENT MCP342x::channel2
